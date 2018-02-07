@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./node_modules/vue/dist/vue.min.js">
+
+    </script>
+    <script>
+
+    window.addEventListener("DOMContentLoaded",function(){
+        var app = new Vue({
+            el: "#app_vue_1",
+            data: {
+                nomUtilisateur: "",
+                titre: "la vie est belle avec les framework",
+                compteur: 0,
+                chaussures: [
+                    "nike",
+                    "adidas",
+                    "reebok",
+                    "asics"
+                ],
+                Minitp: [{message : "Je"},
+                        {message:"Pense"},
+                        {message:"Donc"},
+                        {message: "Je Suis !!"},
+            ]
+            },
+            methods: {
+                increment: function() {
+
+                    console.log("ici !!");
+                    console.log(this.compteur);
+                    this.compteur += 100
+                },
+            decrement: function() {
+                console.log("ici");
+                this.compteur = (this.compteur -100 >= 0) ?
+                this.compteur += -100 : 0;
+
+            },
+            ajusterValeur: function() {
+                console.log(event.srcElement.value);
+                this.compteur = Number(event.srcElement.value);
+            }
+
+        }
+        });
+
+        console.log("ma premiere app VueJs =>");
+        console.log(app);
+    })
+    </script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app_vue_1">
+        <h1 class="title"> HELLO WORLD</h1>
+        <h2 class="title">{{ titre }}</h2>
+        <p v-if="compteur >=500">
+            <span>waaa le grand nombre</span>
+        </p>
+
+        <p>
+            <input type="range" @input="ajusterValeur($event)" min="0" max="1000" step="100" value="0">
+            <button class="btn" v-on:click="increment()">incrémenter !</button>
+            <button class="btn" v-on:click="decrement()"> decrement</button> </p>
+            Mon compteur vaut :{{compteur}}
+
+
+            <hr>
+            <h2 class="title"> lister des chaussures</h2>
+            <ul class="list">
+                <li v-for="pouet in chaussures">
+                    {{pouet}}
+
+                </li>
+
+            </ul>
+
+
+            <hr>
+
+            <h2 class="title">Nom de l'utilisateur:</h2>
+            <input type="text" v-model="nomUtilisateur">
+            {{nomUtilisateur}}
+            <hr>
+            <h2 class="title">Mini tp</h2>
+            <p>
+                creer un tableau d'object de votre choix <br>
+                chaque object contient les memes proprietés (valeurs differentes) <br>
+                afficher chaque  objet dans une lites ordonnée avec une boucle v-for <br>
+                afficher les differentes propriétés de l'objet ! <br>
+
+            </p>
+            <ul>
+          <li v-for="test in Minitp">
+                {{ test.message }}
+          </li>
+        </ul>
+    </div>
+</body>
+</html>

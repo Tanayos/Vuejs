@@ -1,0 +1,11 @@
+{
+  "name": "entrainement",
+  "version": "1.0.0",
+  "description": "yolo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
